@@ -1,0 +1,139 @@
+# ==============================================================================
+# IRIS — Intelligent Retail Insight System (.gitignore)
+# ==============================================================================
+
+# Operating System Files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor & IDE Files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ------------------------------------------------------------------------------
+# Python & AI Service
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Pytest / Coverage / MyPy
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+
+# Heavy Machine Learning Weights & Checkpoints (downloaded/trained locally)
+# Keep small config/scalers but ignore heavy multi-megabyte model checkpoints
+*.engine
+*.bin
+*.pth
+yolo*.pt
+runs/
+wandb/
+
+# ------------------------------------------------------------------------------
+# Node.js, Express & React Frontend
+# ------------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build Outputs
+dist/
+build/
+.output/
+.vite/
+.turbo/
+*.tsbuildinfo
+
+# ------------------------------------------------------------------------------
+# Environment Variables & Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+!.env.example
+
+# ------------------------------------------------------------------------------
+# Logs & Runtime Diagnostics
+# ------------------------------------------------------------------------------
+logs/
+*.log
+*.log.*
+*.pid
+*.seed
+*.pid.lock
+
+# ------------------------------------------------------------------------------
+# Local Databases, Edge Buffers & Uploaded Media
+# ------------------------------------------------------------------------------
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+data/edge_buffer.db
+data/videos/
+*.mp4
+*.avi
+*.mov
+*.mkv
