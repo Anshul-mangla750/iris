@@ -1,4 +1,4 @@
-"""RetailEdge AI — FastAPI application entrypoint."""
+"""RetailEdge AI — FastAPI application entrypoint (models loaded)."""
 from __future__ import annotations
 
 from contextlib import asynccontextmanager

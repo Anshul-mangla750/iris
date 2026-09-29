@@ -1,0 +1,261 @@
+import type {
+  InventoryOverview,
+  InventoryStatusSegment,
+  StockTrendPoint,
+  CategoryStockStatus,
+  ShelfViewData,
+  ShelfHealthAnalysisData,
+  LowStockProductItem,
+  InventoryEventItem,
+} from '../types/inventory';
+
+export const INVENTORY_OVERVIEW_MOCK: InventoryOverview = {
+  totalProducts: 1248,
+  totalProductsTrend: 3,
+  inStock: {
+    count: 1181,
+    percentage: 95,
+    trend: 4,
+  },
+  lowStock: {
+    count: 42,
+    percentage: 3,
+    trend: 0,
+  },
+  outOfStock: {
+    count: 25,
+    percentage: 2,
+    trend: -12,
+  },
+  planogramCompliance: {
+    percentage: 96,
+    trend: 3,
+  },
+  restockRequired: {
+    count: 18,
+  },
+};
+
+export const INVENTORY_STATUS_DISTRIBUTION_MOCK: InventoryStatusSegment[] = [
+  { name: 'In Stock', count: 1181, percentage: 95, color: '#10B981' },
+  { name: 'Low Stock', count: 42, percentage: 3, color: '#F59E0B' },
+  { name: 'Out of Stock', count: 25, percentage: 2, color: '#EF4444' },
+];
+
+export const STOCK_TREND_MOCK: StockTrendPoint[] = [
+  { date: '18 Sep', inStock: 1170, lowStock: 48, outOfStock: 30 },
+  { date: '19 Sep', inStock: 1175, lowStock: 45, outOfStock: 28 },
+  { date: '20 Sep', inStock: 1172, lowStock: 46, outOfStock: 30 },
+  { date: '21 Sep', inStock: 1180, lowStock: 43, outOfStock: 25 },
+  { date: '22 Sep', inStock: 1178, lowStock: 44, outOfStock: 26 },
+  { date: '23 Sep', inStock: 1182, lowStock: 41, outOfStock: 25 },
+  { date: '24 Sep', inStock: 1181, lowStock: 42, outOfStock: 25 },
+];
+
+export const CATEGORY_STOCK_STATUS_MOCK: CategoryStockStatus[] = [
+  { category: 'Beverages', inStock: 98, lowStock: 1.5, outOfStock: 0.5, percentage: 98 },
+  { category: 'Snacks', inStock: 92, lowStock: 5.5, outOfStock: 2.5, percentage: 92 },
+  { category: 'Dairy', inStock: 96, lowStock: 2.5, outOfStock: 1.5, percentage: 96 },
+  { category: 'Personal Care', inStock: 93, lowStock: 4.5, outOfStock: 2.5, percentage: 93 },
+  { category: 'Packaged Food', inStock: 94, lowStock: 4.0, outOfStock: 2.0, percentage: 94 },
+  { category: 'Home Care', inStock: 97, lowStock: 2.0, outOfStock: 1.0, percentage: 97 },
+  { category: 'Bakery', inStock: 90, lowStock: 6.5, outOfStock: 3.5, percentage: 90 },
+  { category: 'Others', inStock: 95, lowStock: 3.5, outOfStock: 1.5, percentage: 95 },
+];
+
+export const SHELF_VIEW_MOCK: ShelfViewData = {
+  aisle: 'Aisle 2 - Snacks',
+  camera: 'Camera 1',
+  imageUrl: '/images/inventory/shelf_live.png',
+  detections: [
+    {
+      id: 'det-1',
+      label: 'Out of Stock',
+      status: 'Out of Stock',
+      x: 24,
+      y: 5,
+      width: 20,
+      height: 30,
+    },
+    {
+      id: 'det-2',
+      label: 'In Stock',
+      status: 'In Stock',
+      x: 45,
+      y: 6,
+      width: 28,
+      height: 29,
+    },
+    {
+      id: 'det-3',
+      label: 'In Stock',
+      status: 'In Stock',
+      x: 1,
+      y: 44,
+      width: 14,
+      height: 12,
+    },
+    {
+      id: 'det-4',
+      label: 'Low Stock',
+      status: 'Low Stock',
+      x: 46,
+      y: 45,
+      width: 23,
+      height: 36,
+    },
+    {
+      id: 'det-5',
+      label: 'In Stock',
+      status: 'In Stock',
+      x: 69,
+      y: 44,
+      width: 14,
+      height: 12,
+    },
+    {
+      id: 'det-6',
+      label: 'In Stock',
+      status: 'In Stock',
+      x: 2,
+      y: 56,
+      width: 14,
+      height: 12,
+    },
+    {
+      id: 'det-7',
+      label: 'In Stock',
+      status: 'In Stock',
+      x: 77,
+      y: 56,
+      width: 14,
+      height: 12,
+    },
+  ],
+};
+
+export const SHELF_HEALTH_MOCK: ShelfHealthAnalysisData = {
+  imageUrl: '/images/inventory/shelf_health.png',
+  overallScore: 94,
+  legend: [
+    { name: 'Well Stocked', color: '#10B981' },
+    { name: 'Low Stock', color: '#F59E0B' },
+    { name: 'Out of Stock', color: '#EF4444' },
+    { name: 'Empty Space', color: '#9CA3AF' },
+  ],
+};
+
+export const LOW_STOCK_PRODUCTS_MOCK: LowStockProductItem[] = [
+  {
+    id: '1',
+    productName: 'Maggi 70g',
+    sku: 'MAG001',
+    currentStock: 2,
+    expectedStock: 10,
+    status: 'Low Stock',
+    aisleShelf: 'Aisle 1 - Shelf 2',
+    lastDetected: '5 min ago',
+    image: '/images/inventory/prod_maggi.png',
+  },
+  {
+    id: '2',
+    productName: 'Coca Cola 500ml',
+    sku: 'COC002',
+    currentStock: 0,
+    expectedStock: 8,
+    status: 'Out of Stock',
+    aisleShelf: 'Aisle 2 - Shelf 3',
+    lastDetected: '8 min ago',
+    image: '/images/inventory/prod_coca_cola.png',
+  },
+  {
+    id: '3',
+    productName: 'Lays Classic 52g',
+    sku: 'LAY003',
+    currentStock: 3,
+    expectedStock: 12,
+    status: 'Low Stock',
+    aisleShelf: 'Aisle 1 - Shelf 1',
+    lastDetected: '12 min ago',
+    image: '/images/inventory/prod_lays.png',
+  },
+  {
+    id: '4',
+    productName: 'Dove Soap 100g',
+    sku: 'DOV004',
+    currentStock: 1,
+    expectedStock: 6,
+    status: 'Low Stock',
+    aisleShelf: 'Aisle 3 - Shelf 2',
+    lastDetected: '15 min ago',
+    image: '/images/inventory/prod_dove.png',
+  },
+  {
+    id: '5',
+    productName: 'Amul Milk 1L',
+    sku: 'AMU005',
+    currentStock: 0,
+    expectedStock: 8,
+    status: 'Out of Stock',
+    aisleShelf: 'Aisle 4 - Shelf 1',
+    lastDetected: '20 min ago',
+    image: '/images/inventory/prod_amul.png',
+  },
+];
+
+export const INVENTORY_EVENTS_MOCK: InventoryEventItem[] = [
+  {
+    id: 'evt-1',
+    time: '03:20 PM',
+    event: 'Stock low',
+    eventType: 'stock_low',
+    product: 'Maggi 70g',
+    aisleShelf: 'Aisle 1 - Shelf 2',
+    status: 'Low Stock',
+  },
+  {
+    id: 'evt-2',
+    time: '03:12 PM',
+    event: 'Out of stock',
+    eventType: 'stock_out',
+    product: 'Coca Cola 500ml',
+    aisleShelf: 'Aisle 2 - Shelf 3',
+    status: 'Out of Stock',
+  },
+  {
+    id: 'evt-3',
+    time: '03:05 PM',
+    event: 'Restocked',
+    eventType: 'restocked',
+    product: 'Lays Classic 52g',
+    aisleShelf: 'Aisle 1 - Shelf 1',
+    status: 'In Stock',
+  },
+  {
+    id: 'evt-4',
+    time: '02:45 PM',
+    event: 'Stock low',
+    eventType: 'stock_low',
+    product: 'Dove Soap 100g',
+    aisleShelf: 'Aisle 3 - Shelf 2',
+    status: 'Low Stock',
+  },
+  {
+    id: 'evt-5',
+    time: '02:30 PM',
+    event: 'Planogram mismatch',
+    eventType: 'mismatch',
+    product: 'Oreo 120g',
+    aisleShelf: 'Aisle 2 - Shelf 1',
+    status: 'Misplaced',
+  },
+  {
+    id: 'evt-6',
+    time: '02:15 PM',
+    event: 'Restocked',
+    eventType: 'restocked',
+    product: 'Amul Milk 1L',
+    aisleShelf: 'Aisle 4 - Shelf 1',
+    status: 'In Stock',
+  },
+];

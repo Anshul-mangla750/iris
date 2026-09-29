@@ -80,6 +80,11 @@ class ModelManager:
     # -------------------------------------------------------------- status
     def status(self) -> list[dict[str, Any]]:
         with self._lock:
+            # Auto-detect if any NOT_TRAINED model now has its weights present on disk
+            for m in list(self._models.values()):
+                if m.status == "NOT_TRAINED" and m.path and Path(m.path).exists():
+                    self.load(m.name)
+
             out = []
             for m in self._models.values():
                 out.append({
